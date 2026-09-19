@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title">베어메탈 GPU 서버 임대 — ELGRIM</title>
+  <meta name="description" data-i18n-attr="content:meta.desc" content="엘그림 베어메탈. RTX A4000 그래픽 서버를 물리 서버 통째로 임대합니다. MI325X 8-GPU AI 서버 예약 접수 중. 이메일 한 통으로 연결." />
+  <meta property="og:title" content="ELGRIM Bare Metal — GPU dedicated servers" />
+  <meta property="og:description" content="A whole physical GPU server, all yours. RTX A4000 available now, 8× MI325X arriving soon." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://servers.elgrim.kr/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235dffb0'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%2304140c'%3EE%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <div class="statusbar">
+    <span data-i18n-html="status.bar">ELGRIM 베어메탈은 현재 소프트 런칭 중입니다. 결제 시스템 대신 이메일로 직접 연결해 드립니다 ·</span>
+    <a href="mailto:help@elgrim.kr" data-mail>help@elgrim.kr</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="logo" href="#top"><span class="logo-mark">E</span>ELGRIM</a>
+      <nav class="main" id="nav">
+        <a href="#top" class="active" data-i18n="nav.home">홈</a>
+        <a href="#plans" data-i18n="nav.servers">서버</a>
+        <a href="#how" data-i18n="nav.how">이용 방법</a>
+        <a href="#included" data-i18n="nav.included">포함 사항</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="hdr-right">
+        <div class="seg seg-sm" id="langSeg" aria-label="Language">
+          <button data-lang="ko">KO</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <select class="select-inline select-sm" id="currencySel" aria-label="Display currency">
+          <option value="KRW">KRW ₩</option>
+          <option value="USD">USD $</option>
+        </select>
+        <button class="btn btn-accent btn-sm" data-open="request" data-server="elgrim-gfx-a4000" data-i18n="cta.request.short">사용 요청</button>
+        <button class="btn btn-sm menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <svg class="hero-star" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#5dffb0" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#5dffb0" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="150" cy="150" r="140" fill="url(#g1)"/>
+          <g stroke="rgba(255,255,255,.18)" stroke-width="1">
+            <rect x="70" y="70" width="160" height="160" rx="18"/>
+            <rect x="95" y="95" width="110" height="110" rx="12"/>
+            <rect x="120" y="120" width="60" height="60" rx="8" fill="rgba(93,255,176,.12)" stroke="#5dffb0"/>
+            <path d="M150 70V40M150 230v30M70 150H40M230 150h30M100 70V50M200 70V50M100 230v20M200 230v20M70 100H50M70 200H50M230 100h20M230 200h20"/>
+          </g>
+        </svg>
+        <div class="hero-inner">
+          <div class="mono-label plasma" data-i18n="hero.label">GPU · Bare Metal · 국내 IDC</div>
+          <h1 data-i18n-html="hero.h1">베어메탈 GPU 서버,<br/>한 대를 통째로.</h1>
+          <p class="lead" data-i18n-html="hero.lead"></p>
+          <ul class="pills">
+            <li data-i18n="hero.pill1">물리 서버 전체</li>
+            <li data-i18n="hero.pill2">AMD EPYC + NVIDIA / AMD GPU</li>
+            <li data-i18n="hero.pill3">Root · IPMI 권한</li>
+            <li data-i18n="hero.pill4">국내 IDC · 1Gbps</li>
+          </ul>
+          <div class="hero-cta">
+            <a class="btn btn-accent" href="#plans" data-i18n="hero.cta1">서버 보기</a>
+            <button class="btn" data-open="request" data-server="elgrim-gfx-a4000" data-i18n="hero.cta2">지금 사용 요청</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="block" id="plans">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="mono-label" data-i18n="plans.label">// 서버 현황</div>
+          <h2 data-i18n="plans.h2">서버를 고르고, 이메일로 연결받기</h2>
+          <p data-i18n-html="plans.p"></p>
+        </div>
+
+        <div class="toolbar">
+          <div class="seg" id="statusSeg">
+            <button data-filter="all" class="on" data-i18n="filter.all">전체</button>
+            <button data-filter="available" data-i18n="filter.available">즉시 사용 가능</button>
+            <button data-filter="reserve"><span data-i18n="filter.reserve">입고 예정</span> <span class="chip" data-i18n="filter.chip">예약</span></button>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <span class="hint" id="priceSource"></span>
+            <select class="select-inline" id="sortSel" aria-label="Sort">
+              <option value="default" data-i18n="sort.default">기본 정렬</option>
+              <option value="available" data-i18n="sort.available">사용 가능 우선</option>
+              <option value="gpu" data-i18n="sort.gpu">GPU 수 많은 순</option>
+            </select>
+            <button class="btn btn-sm" id="refreshBtn" data-i18n="refresh">새로고침</button>
+          </div>
+        </div>
+
+        <div class="grid-plans" id="plans-grid"></div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="mono-label alien" data-i18n="how.label">// 이용 방법</div>
+          <h2 data-i18n="how.h2">결제 대신, 사람과 연결됩니다</h2>
+          <p data-i18n="how.p">아직 자동 결제는 없습니다. 대신 네 단계면 충분합니다.</p>
+        </div>
+        <div class="steps">
+          <div class="card step"><div class="num">STEP 01</div><h3 data-i18n="how.s1h">서버 선택</h3><p data-i18n="how.s1p"></p></div>
+          <div class="card step"><div class="num">STEP 02</div><h3 data-i18n="how.s2h">이메일 남기기</h3><p data-i18n-html="how.s2p"></p></div>
+          <div class="card step"><div class="num">STEP 03</div><h3 data-i18n="how.s3h">담당자 회신</h3><p data-i18n-html="how.s3p"></p></div>
+          <div class="card step"><div class="num">STEP 04</div><h3 data-i18n="how.s4h">접속 정보 전달</h3><p data-i18n="how.s4p"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INCLUDED -->
+    <section class="block" id="included">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="mono-label cyan" data-i18n="inc.label">// 포함 사항</div>
+          <h2 data-i18n="inc.h2">모든 서버에 기본으로</h2>
+        </div>
+        <div class="grid-4">
+          <div class="card feat"><div class="icon">▣</div><h3 data-i18n="inc.f1h"></h3><p data-i18n="inc.f1p"></p></div>
+          <div class="card feat"><div class="icon">⚙</div><h3 data-i18n="inc.f2h"></h3><p data-i18n="inc.f2p"></p></div>
+          <div class="card feat"><div class="icon">◎</div><h3 data-i18n="inc.f3h"></h3><p data-i18n="inc.f3p"></p></div>
+          <div class="card feat"><div class="icon">⌘</div><h3 data-i18n="inc.f4h"></h3><p data-i18n="inc.f4p"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="block" id="usecases">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="mono-label amber" data-i18n="use.label">// 활용 사례</div>
+          <h2 data-i18n="use.h2">이런 곳에 씁니다</h2>
+        </div>
+        <div class="tags" id="useTags"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="block" id="faq">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="mono-label">// FAQ</div>
+          <h2 data-i18n="faq.h2">자주 묻는 질문</h2>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="wrap">
+        <div class="mono-label alien">ready when you are</div>
+        <h2 data-i18n="cta.h2">준비되면, 이메일 한 통.</h2>
+        <p data-i18n="cta.p"></p>
+        <div class="hero-cta">
+          <button class="btn btn-accent" data-open="request" data-server="elgrim-gfx-a4000" data-i18n="cta.request">사용 요청하기</button>
+          <a class="btn" href="mailto:help@elgrim.kr" data-mail><span data-i18n="cta.mail">help@elgrim.kr 로 메일 보내기</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div>© <span id="year"></span> ELGRIM · <span data-i18n="footer.tag">베어메탈 GPU 서버 임대</span></div>
+      <div><a href="mailto:help@elgrim.kr" data-mail>help@elgrim.kr</a> · <a href="#faq" data-i18n="footer.privacy">개인정보 처리 안내</a></div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="card modal">
+      <div class="modal-head">
+        <div>
+          <div class="mono-label alien" id="modalLabel"></div>
+          <h3 id="modalTitle"></h3>
+          <div class="server-line" id="modalServer"></div>
+        </div>
+        <button class="x" data-close aria-label="Close">×</button>
+      </div>
+
+      <form class="req" id="reqForm" novalidate>
+        <input type="hidden" name="type" id="fType" />
+        <input type="hidden" name="serverId" id="fServerId" />
+        <input type="hidden" name="serverName" id="fServerName" />
+        <div class="field">
+          <label for="fEmail"><span data-i18n="form.email">이메일</span> <span class="opt" data-i18n="form.emailOpt">(회신받을 주소)</span></label>
+          <input type="email" id="fEmail" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="fName"><span data-i18n="form.name">이름 / 소속</span> <span class="opt" data-i18n="form.optional">(선택)</span></label>
+            <input type="text" id="fName" name="name" data-i18n-attr="placeholder:form.namePh" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="fOs">OS</label>
+            <select id="fOs" name="os"></select>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="fPurpose" data-i18n="form.purpose">용도</label>
+            <select id="fPurpose" name="purpose"></select>
+          </div>
+          <div class="field">
+            <label for="fDuration" data-i18n="form.duration">사용 기간</label>
+            <select id="fDuration" name="duration"></select>
+          </div>
+        </div>
+        <div class="field" id="gpuField" style="display:none">
+          <label for="fGpu"><span data-i18n="form.gpu">희망 GPU 수</span> <span class="opt">(MI325X)</span></label>
+          <select id="fGpu" name="gpuCount">
+            <option value="1">1 GPU</option><option value="2">2 GPU</option><option value="4">4 GPU</option><option value="8" selected data-i18n="form.gpuAll">8 GPU (노드 전체)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fMsg"><span data-i18n="form.msg">메시지</span> <span class="opt" data-i18n="form.optional">(선택)</span></label>
+          <textarea id="fMsg" name="message" data-i18n-attr="placeholder:form.msgPh"></textarea>
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="fConsent" required />
+          <span data-i18n="form.consent"></span>
+        </label>
+        <div class="err" id="formErr"></div>
+        <div class="form-foot">
+          <span class="hint" data-i18n-html="form.hint"></span>
+          <button type="submit" class="btn btn-accent" id="submitBtn"></button>
+        </div>
+      </form>
+
+      <div class="done" id="done">
+        <div class="ok">✓</div>
+        <h3 id="doneTitle"></h3>
+        <p id="doneMsg"></p>
+        <div class="hero-cta" style="margin-top:20px">
+          <button class="btn btn-accent" data-close data-i18n="close">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/servers.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
