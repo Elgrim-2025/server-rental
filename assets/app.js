@@ -2,7 +2,7 @@
    ELGRIM Bare Metal - 프론트엔드 로직 (백엔드 없음, GitHub Pages)
    - KO / EN, KRW / USD 토글 (localStorage + ?lang= ?cur= 쿼리)
    - 가격/상태는 Google Sheet(Apps Script GET ?action=servers) 에서 실시간 로드
-   - 전송: (1) FormSubmit → help@elgrim.kr 메일  (2) Apps Script → logs 시트
+   - 전송: (1) FormSubmit → chkang@elgrim.kr 메일  (2) Apps Script → logs 시트
    - 실패 시 mailto: 폴백 + localStorage 임시 보관
    ============================================================ */
 (function () {

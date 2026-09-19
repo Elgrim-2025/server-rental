@@ -57,10 +57,10 @@ POST {logEndpoint}   body: JSON(key 포함)              logs 에 한 줄 append
 
 | 버튼 | 대상 | 동작 |
 |---|---|---|
-| 사용 요청하기 / Request access | status = available | FormSubmit → help@elgrim.kr 메일 + logs 시트 append |
-| 예약하기 / Reserve | status = reserve | logs 시트 append + Apps Script 가 help@elgrim.kr 로 알림 메일 (`NOTIFY_ON = ["reserve"]`) |
+| 사용 요청하기 / Request access | status = available | FormSubmit → chkang@elgrim.kr 메일 + logs 시트 append |
+| 예약하기 / Reserve | status = reserve | logs 시트 append + Apps Script 가 chkang@elgrim.kr 로 알림 메일 (`NOTIFY_ON = ["reserve"]`) |
 
-- **FormSubmit 활성화**: 첫 실제 제출 때 help@elgrim.kr 로 "Activate form" 메일이 한 번 옵니다. 링크를 누르면 이후 자동. 그 전까지는 요청이 시트에는 기록되지만 메일은 가지 않습니다.
+- **FormSubmit 활성화**: 첫 실제 제출 때 chkang@elgrim.kr 로 "Activate form" 메일이 한 번 옵니다. 링크를 누르면 이후 자동. 그 전까지는 요청이 시트에는 기록되지만 메일은 가지 않습니다.
 - 둘 다 실패하면 내용이 채워진 `mailto:` 링크로 폴백. 로그 전송 실패분은 localStorage 에 보관했다가 다음 방문 시 재전송.
 - 메일을 Apps Script 하나로 통일하고 싶으면: Code.gs 의 `NOTIFY_ON` 을 `["request","reserve"]` 로 바꾸고 새 버전 배포, `servers.js` 의 `mailEndpoint` 를 `""` 로.
 

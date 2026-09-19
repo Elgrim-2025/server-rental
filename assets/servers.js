@@ -5,10 +5,10 @@
    ============================================================ */
 
 window.ELGRIM_CONFIG = {
-  contactEmail: "help@elgrim.kr",
+  contactEmail: "chkang@elgrim.kr",
 
   // (1) 이메일 발송: FormSubmit (무료, 백엔드 불필요, 첫 제출 시 활성화 메일 1회 승인)
-  mailEndpoint: "https://formsubmit.co/ajax/help@elgrim.kr",
+  mailEndpoint: "https://formsubmit.co/ajax/chkang@elgrim.kr",
 
   // (2) Google Apps Script 웹앱 URL. 가격 읽기(GET ?action=servers) + 로그 적재(POST) 모두 이 주소.
   logEndpoint: "https://script.google.com/macros/s/AKfycbwVd1C7xAuDyleSRXUtSRBUyxbDHAeyKx-M0ygCc_kIOVXLC50HP4hzUPdexzZj9riW1A/exec",

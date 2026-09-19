@@ -13,7 +13,7 @@
  */
 
 const SHARED_KEY = "elgrim-x0c35u7c1ci4w5u9";          // 프론트 servers.js 의 logKey 와 동일하게
-const NOTIFY_EMAIL = "help@elgrim.kr";   // "" 이면 Apps Script 메일 알림 끔
+const NOTIFY_EMAIL = "chkang@elgrim.kr";   // "" 이면 Apps Script 메일 알림 끔
 const NOTIFY_ON = ["reserve"];           // 알림 보낼 type. FormSubmit 을 끄면 ["request","reserve"] 로
 
 const SH_SERVERS = "servers";
@@ -35,7 +35,7 @@ const SEED_CONFIG = [
   ["fx_usd_krw", "1400", "USD 가격이 비어 있을 때 KRW÷환율 로 자동 환산"],
   ["reply_within_ko", "24시간", "회신 목표 시간(한글)"],
   ["reply_within_en", "24 hours", "회신 목표 시간(영문)"],
-  ["contact_email", "help@elgrim.kr", "표시용 연락 메일"],
+  ["contact_email", "chkang@elgrim.kr", "표시용 연락 메일"],
 ];
 
 /* ---------------- helpers ---------------- */
