@@ -38,8 +38,8 @@ window.SERVERS = [
     location: { ko: "KR · 국내 IDC", en: "KR · Seoul IDC" },
     status: "available",
     tagline: {
-      ko: "48코어 EPYC + 251GB RAM 물리 서버 전체를 통째로. LLM 추론, 렌더링, 게임 서버 호스팅에 적합.",
-      en: "A whole 48-core EPYC box with 251 GB RAM, all yours. Great for LLM inference, rendering and game-server hosting.",
+      ko: "EPYC 48코어에 메모리 251GB인 물리 서버를 한 대 통째로 씁니다. LLM 추론이나 렌더링, 게임 서버용으로 쓰기 좋습니다.",
+      en: "A whole physical server with a 48-core EPYC and 251 GB of RAM. Good for LLM inference, rendering or game servers.",
     },
     specs: [
       { k: "CPU", ko: "AMD EPYC 7642 · 48코어 (2.3 / 3.3 GHz)", en: "AMD EPYC 7642 · 48 cores (2.3 / 3.3 GHz)" },
@@ -64,8 +64,8 @@ window.SERVERS = [
     status: "reserve",
     eta: { ko: "입고 예정", en: "Arriving soon" },
     tagline: {
-      ko: "GIGABYTE G893-ZX1-AAX2 플랫폼. 대규모 LLM 학습/추론용 8-GPU 노드. 입고 즉시 예약 순서대로 연결해 드립니다.",
-      en: "GIGABYTE G893-ZX1-AAX2 platform. An 8-GPU node for large-scale LLM training and inference. Reservations are served in order once it lands.",
+      ko: "GIGABYTE G893-ZX1-AAX2에 MI325X 8장을 올린 노드로, 큰 LLM 학습과 추론용입니다. 입고되면 예약 순서대로 연락드립니다.",
+      en: "A GIGABYTE G893-ZX1-AAX2 node with eight MI325X GPUs, for training and serving large LLMs. Once it arrives we contact reservations in order.",
     },
     specs: [
       { k: "Platform", ko: "GIGABYTE G893-ZX1-AAX2", en: "GIGABYTE G893-ZX1-AAX2" },
@@ -90,8 +90,8 @@ window.SERVERS = [
     status: "reserve",
     eta: { ko: "입고 예정", en: "Arriving soon" },
     tagline: {
-      ko: "RTX 4090 24GB 1장, 16코어 · 128GB 호스트. LLM 추론, 모델 개발·테스트에 적합.",
-      en: "One RTX 4090 24 GB on a 16-core, 128 GB host. Good for LLM inference and model development.",
+      ko: "RTX 4090 한 장에 16코어, 메모리 128GB 구성입니다. 추론이나 개발용으로 쓰기 좋습니다.",
+      en: "One RTX 4090 with 16 cores and 128 GB of RAM. Suits inference and development work.",
     },
     specs: [
       { k: "GPU", ko: "NVIDIA GeForce RTX 4090 24GB GDDR6X (Ada Lovelace)", en: "NVIDIA GeForce RTX 4090 24 GB GDDR6X (Ada Lovelace)" },
@@ -114,8 +114,8 @@ window.SERVERS = [
     status: "reserve",
     eta: { ko: "입고 예정", en: "Arriving soon" },
     tagline: {
-      ko: "48GB VRAM GPU(L40S 또는 RTX 6000 Ada) 1장, 32코어 · 256GB 호스트. 추론, 그래픽 작업, 렌더링에 적합.",
-      en: "One 48 GB GPU (L40S or RTX 6000 Ada) on a 32-core, 256 GB host. Good for inference, graphics work and rendering.",
+      ko: "VRAM 48GB인 L40S 또는 RTX 6000 Ada 한 장에 32코어, 메모리 256GB 구성입니다. 추론과 그래픽 작업, 렌더링에 씁니다.",
+      en: "One 48 GB L40S or RTX 6000 Ada with 32 cores and 256 GB of RAM, for inference, graphics and rendering.",
     },
     specs: [
       { k: "GPU", ko: "NVIDIA L40S 또는 RTX 6000 Ada 48GB GDDR6 ECC (Ada Lovelace)", en: "NVIDIA L40S or RTX 6000 Ada 48 GB GDDR6 ECC (Ada Lovelace)" },
