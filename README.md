@@ -1,4 +1,4 @@
-# ELGRIM Bare Metal — servers.elgrim.kr
+# ELGRIM Bare Metal — elliongpu.com
 
 엘그림 GPU 서버를 베어메탈로 임대하는 정적 사이트. 백엔드 없이 GitHub Pages 에서 동작하고,
 가격/상태는 Google Sheet 에서 실시간으로 읽어옵니다.
@@ -6,7 +6,7 @@
 ```
 elgrim-baremetal/
 ├── index.html            # 단일 페이지 (KO/EN, KRW/USD 토글)
-├── CNAME                 # servers.elgrim.kr
+├── CNAME                 # elliongpu.com
 ├── assets/
 │   ├── style.css         # ufostack.com 디자인 토큰 차용
 │   ├── i18n.js           # 모든 UI 문구 ko / en
@@ -79,8 +79,8 @@ POST {logEndpoint}   body: JSON(key 포함)              logs 에 한 줄 append
 ## GitHub Pages 배포
 
 1. 이 폴더 내용을 레포 루트에 커밋 → Settings → Pages → Branch `main` / root
-2. `CNAME` 은 이미 `servers.elgrim.kr`. DNS 에 `servers` CNAME → `<계정>.github.io` 추가 (Cloudflare 사용 시 프록시 끄거나 SSL Full)
-3. Pages 설정에서 Enforce HTTPS 체크
+2. `CNAME` 은 `elliongpu.com` (2026-09-28 `servers.elgrim.kr` 에서 변경). DNS 는 Cloudflare(Hwasoo3838 계정) `elliongpu.com` 존: apex A 185.199.108~111.153 / AAAA 2606:50c0:8000~8003::153, `www` CNAME → `elgrim-2025.github.io`, 모두 프록시, SSL Full + 항상 HTTPS
+3. HTTPS 는 Cloudflare Universal SSL 이 처리 (프록시 상태에서는 GitHub 의 Enforce HTTPS 는 꺼져 있어도 정상)
 
 ## Apps Script 코드 수정 시
 
