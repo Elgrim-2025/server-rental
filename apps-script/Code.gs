@@ -1,5 +1,5 @@
 /**
- * ELGRIM Bare Metal — Google Sheets 백엔드 (Apps Script 웹앱)
+ * Ellion Bare Metal: Google Sheets 백엔드 (Apps Script 웹앱)
  *
  * 시트 구성 (setup() 실행 시 자동 생성)
  *   servers : 가격/상태/문구. 여기만 고치면 사이트에 반영됩니다 (캐시 최대 2분).
@@ -136,7 +136,7 @@ function doPost(e) {
 }
 
 function notify_(b, to) {
-  const subject = "[ELGRIM " + (b.type === "reserve" ? "예약" : "사용요청") + "] " + (b.serverName || "") + " — " + (b.email || "");
+  const subject = "[Ellion " + (b.type === "reserve" ? "예약" : "사용요청") + "] " + (b.serverName || "") + " — " + (b.email || "");
   const lines = [
     "구분: " + (b.type === "reserve" ? "예약(입고 예정)" : "사용 요청"),
     "서버: " + b.serverName + " (" + b.serverId + ")",
