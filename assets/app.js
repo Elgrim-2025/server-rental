@@ -2,7 +2,7 @@
    ELGRIM Bare Metal - 프론트엔드 로직 (백엔드 없음, GitHub Pages)
    - KO / EN, KRW / USD 토글 (localStorage + ?lang= ?cur= 쿼리)
    - 가격/상태는 Google Sheet(Apps Script GET ?action=servers) 에서 실시간 로드
-   - 전송: (1) FormSubmit → chkang@elgrim.kr 메일  (2) Apps Script → logs 시트
+   - 전송: (1) FormSubmit → 시트 config 의 notify_email / contact_email 로 메일  (2) Apps Script → logs 시트
    - 실패 시 mailto: 폴백 + localStorage 임시 보관
    ============================================================ */
 (function () {
@@ -26,12 +26,17 @@
 
   const t = (k, vars) => {
     let s = (I18N[lang] && I18N[lang][k]) ?? (I18N.ko && I18N.ko[k]) ?? k;
-    if (typeof s === "string" && vars) Object.entries(vars).forEach(([a, b]) => (s = s.split("{" + a + "}").join(b)));
+    // {contact} 는 항상 현재 연락 메일(시트 contact_email)로 치환
+    if (typeof s === "string") Object.entries({ contact: contactEmail(), ...vars }).forEach(([a, b]) => (s = s.split("{" + a + "}").join(b)));
     return s;
   };
   const L = (obj) => (obj && typeof obj === "object" ? obj[lang] || obj.ko || "" : obj || "");
   const replyWithin = () => (live && live.config && live.config["reply_within_" + lang]) || L(CFG.replyWithin) || "24h";
-  const contactEmail = () => (live && live.config && live.config.contact_email) || CFG.contactEmail;
+  const liveCfg = (k) => String((live && live.config && live.config[k]) ?? "").trim();
+  // 연락 메일: 시트 config.contact_email > servers.js 기본값. 화면 표시, mailto, 메일 수신 모두 이 값을 따름
+  const contactEmail = () => liveCfg("contact_email") || CFG.contactEmail;
+  // 요청 메일 수신: config.notify_email 이 있으면 그 주소, 없으면 contact_email
+  const notifyEmail = () => liveCfg("notify_email") || contactEmail();
   const fx = () => Number(live && live.config && live.config.fx_usd_krw) || CFG.fxUsdKrw || 1400;
 
   /* ---------- i18n 적용 ---------- */
@@ -170,7 +175,7 @@
     render();
   });
   $("#sortSel").addEventListener("change", (e) => { sort = e.target.value; render(); });
-  $("#refreshBtn").addEventListener("click", async () => { await loadLive(true); render(); toast(t("refreshed")); });
+  $("#refreshBtn").addEventListener("click", async () => { await loadLive(true); applyI18n(); render(); toast(t("refreshed")); });
 
   /* ---------- 모바일 메뉴 ---------- */
   $("#menuBtn").addEventListener("click", () => $("#nav").classList.toggle("open"));
@@ -253,10 +258,13 @@
   });
   const mailBody = (p) => Object.entries(mailFields(p)).map(([k, v]) => `${k}: ${v}`).join("\n");
 
+  // FormSubmit 주소의 {email} 을 현재 수신 메일로 치환 (시트 변경이 발송 대상에도 반영되도록)
+  const mailUrl = () => (CFG.mailEndpoint || "").split("{email}").join(notifyEmail());
   async function sendMail(p) {
-    if (!CFG.mailEndpoint) return { ok: false, skipped: true };
+    const url = mailUrl();
+    if (!url) return { ok: false, skipped: true };
     const body = { _subject: mailSubject(p), _replyto: p.email, _template: "table", _captcha: "false", ...mailFields(p) };
-    const r = await fetch(CFG.mailEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
     const j = await r.json().catch(() => ({}));
     return { ok: r.ok && String(j.success) !== "false", res: j };
   }

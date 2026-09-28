@@ -5,10 +5,13 @@
    ============================================================ */
 
 window.ELGRIM_CONFIG = {
-  contactEmail: "chkang@elgrim.kr",
+  // 연락 메일 기본값(폴백). 시트 config 탭의 contact_email 이 있으면 그 값이 우선합니다.
+  // 화면 표시 / mailto / 요청 메일 수신이 모두 시트 값을 따르므로 평소에는 시트만 고치면 됩니다.
+  contactEmail: "help@elliongpu.com",
 
-  // (1) 이메일 발송: FormSubmit (무료, 백엔드 불필요, 첫 제출 시 활성화 메일 1회 승인)
-  mailEndpoint: "https://formsubmit.co/ajax/chkang@elgrim.kr",
+  // (1) 이메일 발송: FormSubmit (무료, 백엔드 불필요). {email} 자리에 시트의 notify_email → contact_email 순으로 들어감.
+  //     수신 주소가 바뀌면 그 주소로 첫 제출 때 "Activate form" 메일이 1회 오고, 승인해야 이후 메일이 전달됩니다.
+  mailEndpoint: "https://formsubmit.co/ajax/{email}",
 
   // (2) Google Apps Script 웹앱 URL. 가격 읽기(GET ?action=servers) + 로그 적재(POST) 모두 이 주소.
   logEndpoint: "https://script.google.com/macros/s/AKfycbwVd1C7xAuDyleSRXUtSRBUyxbDHAeyKx-M0ygCc_kIOVXLC50HP4hzUPdexzZj9riW1A/exec",
