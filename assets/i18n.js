@@ -1,8 +1,8 @@
-/* ELGRIM Bare Metal - UI 문구 (ko / en) */
+/* Ellion Bare Metal - UI 문구 (ko / en) */
 window.I18N = {
   ko: {
-    "meta.title": "베어메탈 GPU 서버 임대 | ELGRIM",
-    "meta.desc": "엘그림 베어메탈 GPU 서버 임대. RTX A4000, RTX 4090, L40S / RTX 6000 Ada, MI325X 8장 서버를 메일로 신청받습니다.",
+    "meta.title": "베어메탈 GPU 서버 임대 | Ellion",
+    "meta.desc": "엘리온 베어메탈 GPU 서버 임대. RTX A4000, RTX 4090, L40S / RTX 6000 Ada, MI325X 8장 서버를 메일로 신청받습니다.",
     "status.bar": "소프트 런칭 기간이라 온라인 결제 없이 메일로 신청을 받고 있습니다. 문의:",
     "nav.home": "홈", "nav.servers": "서버", "nav.how": "이용 방법", "nav.included": "기본 제공", "nav.faq": "FAQ",
     "cta.request.short": "사용 신청",
@@ -63,12 +63,12 @@ window.I18N = {
     "done.reserve.msg": "<b>{server}</b> 입고 후 예약 순서대로 입력하신 메일(<b>{email}</b>)로 연락드립니다.",
     "done.reserve.logonly": " (예약 기록만 저장됨)",
     "toast.request": "신청을 보냈습니다", "toast.reserve": "예약했습니다",
-    "mail.subject.request": "[ELGRIM 사용요청]", "mail.subject.reserve": "[ELGRIM 예약]",
+    "mail.subject.request": "[Ellion 사용요청]", "mail.subject.reserve": "[Ellion 예약]",
     "close": "닫기",
   },
   en: {
-    "meta.title": "Bare-metal GPU server rental | ELGRIM",
-    "meta.desc": "ELGRIM rents bare-metal GPU servers in Korea: RTX A4000, RTX 4090, L40S / RTX 6000 Ada and an 8× MI325X node. Requests by email.",
+    "meta.title": "Bare-metal GPU server rental | Ellion",
+    "meta.desc": "Ellion rents bare-metal GPU servers in Korea: RTX A4000, RTX 4090, L40S / RTX 6000 Ada and an 8× MI325X node. Requests by email.",
     "status.bar": "We're in soft launch, so there's no online checkout yet. Send requests by email:",
     "nav.home": "Home", "nav.servers": "Servers", "nav.how": "How it works", "nav.included": "Included", "nav.faq": "FAQ",
     "cta.request.short": "Request access",
@@ -129,7 +129,7 @@ window.I18N = {
     "done.reserve.msg": "Once <b>{server}</b> arrives, we'll contact <b>{email}</b> in reservation order.",
     "done.reserve.logonly": " (reservation logged only)",
     "toast.request": "Request sent", "toast.reserve": "Reservation placed",
-    "mail.subject.request": "[ELGRIM request]", "mail.subject.reserve": "[ELGRIM reservation]",
+    "mail.subject.request": "[Ellion request]", "mail.subject.reserve": "[Ellion reservation]",
     "close": "Close",
   },
 };

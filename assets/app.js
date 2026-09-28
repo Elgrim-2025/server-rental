@@ -1,5 +1,5 @@
 /* ============================================================
-   ELGRIM Bare Metal - 프론트엔드 로직 (백엔드 없음, GitHub Pages)
+   Ellion Bare Metal - 프론트엔드 로직 (백엔드 없음, GitHub Pages)
    - KO / EN, KRW / USD 토글 (localStorage + ?lang= ?cur= 쿼리)
    - 가격/상태는 Google Sheet(Apps Script GET ?action=servers) 에서 실시간 로드
    - 전송: (1) FormSubmit → 시트 config 의 notify_email / contact_email 로 메일  (2) Apps Script → logs 시트
