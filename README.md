@@ -1,10 +1,10 @@
-# ELGRIM Bare Metal — elliongpu.com
+# Ellion Bare Metal (elliongpu.com)
 
-엘그림 GPU 서버를 베어메탈로 임대하는 정적 사이트. 백엔드 없이 GitHub Pages 에서 동작하고,
+Ellion(엘리온, 구 ELGRIM) GPU 서버를 베어메탈로 임대하는 정적 사이트. 백엔드 없이 GitHub Pages 에서 동작하고,
 가격/상태는 Google Sheet 에서 실시간으로 읽어옵니다.
 
 ```
-elgrim-baremetal/
+server-rental/
 ├── index.html            # 단일 페이지 (KO/EN, KRW/USD 토글)
 ├── CNAME                 # elliongpu.com
 ├── assets/
@@ -21,7 +21,7 @@ elgrim-baremetal/
 |---|---|
 | 스프레드시트 | https://docs.google.com/spreadsheets/d/1GuotX0HCkdlWDwI3TW4UgNEDc6eI4Xq4OAMqI0urJwk/edit |
 | Apps Script 프로젝트 | https://script.google.com/u/0/home/projects/1OD-O2C60rltU2iLgiDcTXg9oMioWWW2tI_xM5bPZl8otLTPdqnHpGnv5/edit |
-| 웹앱 URL | `servers.js` 의 `logEndpoint` (버전 4, 액세스: 모든 사용자) |
+| 웹앱 URL | `servers.js` 의 `logEndpoint` (버전 5, 액세스: 모든 사용자) |
 | 계정 | lgodl3512@gmail.com |
 
 ### 시트 탭
