@@ -21,7 +21,7 @@ elgrim-baremetal/
 |---|---|
 | 스프레드시트 | https://docs.google.com/spreadsheets/d/1GuotX0HCkdlWDwI3TW4UgNEDc6eI4Xq4OAMqI0urJwk/edit |
 | Apps Script 프로젝트 | https://script.google.com/u/0/home/projects/1OD-O2C60rltU2iLgiDcTXg9oMioWWW2tI_xM5bPZl8otLTPdqnHpGnv5/edit |
-| 웹앱 URL | `servers.js` 의 `logEndpoint` (버전 2, 액세스: 모든 사용자) |
+| 웹앱 URL | `servers.js` 의 `logEndpoint` (버전 4, 액세스: 모든 사용자) |
 | 계정 | lgodl3512@gmail.com |
 
 ### 시트 탭
@@ -40,6 +40,11 @@ elgrim-baremetal/
 
 **config** — `fx_usd_krw` 환율, `reply_within_ko/en` 회신 목표 시간, `contact_email`.
 
+- `contact_email` 하나만 바꾸면 사이트의 메일 표시·mailto 링크·버튼 문구, FormSubmit 수신 주소, Apps Script 예약 알림 수신 주소가 모두 따라갑니다.
+- 알림만 다른 주소로 받고 싶으면 `notify_email` 행을 추가하세요 (수신은 `notify_email` 우선, 표시는 `contact_email`).
+- 수신 주소가 바뀌면 FormSubmit 이 새 주소로 "Activate form" 메일을 1회 보냅니다. 승인해야 이후 메일이 전달됩니다 (그 전에도 logs 시트 기록은 정상).
+- `servers.js` 의 `contactEmail` 과 `index.html` 의 주소는 시트를 못 읽을 때만 쓰는 폴백입니다.
+
 **logs** — 사용 요청 / 예약 로그. 프론트가 자동으로 append. `status` 열(드롭다운 new / contacted / done / cancelled)을 손으로 바꾸면 처리 현황 관리 끝.
 
 ### API
@@ -57,12 +62,12 @@ POST {logEndpoint}   body: JSON(key 포함)              logs 에 한 줄 append
 
 | 버튼 | 대상 | 동작 |
 |---|---|---|
-| 사용 요청하기 / Request access | status = available | FormSubmit → chkang@elgrim.kr 메일 + logs 시트 append |
-| 예약하기 / Reserve | status = reserve | logs 시트 append + Apps Script 가 chkang@elgrim.kr 로 알림 메일 (`NOTIFY_ON = ["reserve"]`) |
+| 사용 요청하기 / Request access | status = available | FormSubmit → 시트 `contact_email`(또는 `notify_email`) 메일 + logs 시트 append |
+| 예약하기 / Reserve | status = reserve | logs 시트 append + Apps Script 가 시트 `contact_email`(또는 `notify_email`) 로 알림 메일 (`NOTIFY_ON = ["reserve"]`) |
 
-- **FormSubmit 활성화**: 첫 실제 제출 때 chkang@elgrim.kr 로 "Activate form" 메일이 한 번 옵니다. 링크를 누르면 이후 자동. 그 전까지는 요청이 시트에는 기록되지만 메일은 가지 않습니다.
+- **FormSubmit 활성화**: 수신 주소별로 첫 실제 제출 때 그 주소로 "Activate form" 메일이 한 번 옵니다. 링크를 누르면 이후 자동. 그 전까지는 요청이 시트에는 기록되지만 메일은 가지 않습니다.
 - 둘 다 실패하면 내용이 채워진 `mailto:` 링크로 폴백. 로그 전송 실패분은 localStorage 에 보관했다가 다음 방문 시 재전송.
-- 메일을 Apps Script 하나로 통일하고 싶으면: Code.gs 의 `NOTIFY_ON` 을 `["request","reserve"]` 로 바꾸고 새 버전 배포, `servers.js` 의 `mailEndpoint` 를 `""` 로.
+- 메일을 Apps Script 하나로 통일하고 싶으면: Code.gs 의 `NOTIFY_ON` 을 `["request","reserve"]` 로 바꾸고 새 버전 배포, `servers.js` 의 `mailEndpoint` 를 `""` 로. (`mailEndpoint` 의 `{email}` 은 시트 수신 주소로 자동 치환)
 
 ## 언어 / 통화
 
