@@ -81,4 +81,52 @@ window.SERVERS = [
     os: ["Ubuntu 24.04 LTS + ROCm", "Ubuntu 22.04 LTS + ROCm", "RHEL 9 (ask)"],
     ctaType: "reserve",
   },
+  {
+    id: "elgrim-rtx4090",
+    accent: "gpu",
+    catLabel: "GPU · RTX 4090",
+    name: { ko: "GPU 서버 · RTX 4090", en: "GPU Server · RTX 4090" },
+    location: { ko: "KR · 국내 IDC", en: "KR · Seoul IDC" },
+    status: "reserve",
+    eta: { ko: "입고 예정", en: "Arriving soon" },
+    tagline: {
+      ko: "RTX 4090 24GB 1장, 16코어 · 128GB 호스트. LLM 추론, 모델 개발·테스트에 적합.",
+      en: "One RTX 4090 24 GB on a 16-core, 128 GB host. Good for LLM inference and model development.",
+    },
+    specs: [
+      { k: "GPU", ko: "NVIDIA GeForce RTX 4090 24GB GDDR6X (Ada Lovelace)", en: "NVIDIA GeForce RTX 4090 24 GB GDDR6X (Ada Lovelace)" },
+      { k: "Host", ko: "16 Core · 128 GB RAM", en: "16 cores · 128 GB RAM" },
+      { k: "Use", ko: "추론 · 개발", en: "Inference · Development" },
+      { k: "Access", ko: "Root / SSH", en: "Root / SSH" },
+    ],
+    priceKrw: 700000, // 시트 price_krw 가 우선
+    priceUsd: null,
+    priceNote: { ko: "월 단위 · 예약 순서대로 배정", en: "Monthly · assigned in reservation order" },
+    os: ["Ubuntu 24.04 LTS", "Ubuntu 22.04 LTS", "Debian 12", "Rocky Linux 9", "Windows Server (ask)"],
+    ctaType: "reserve",
+  },
+  {
+    id: "elgrim-l40s-6000ada",
+    accent: "gpu",
+    catLabel: "GPU · 48GB Ada",
+    name: { ko: "GPU 서버 · L40S / RTX 6000 Ada", en: "GPU Server · L40S / RTX 6000 Ada" },
+    location: { ko: "KR · 국내 IDC", en: "KR · Seoul IDC" },
+    status: "reserve",
+    eta: { ko: "입고 예정", en: "Arriving soon" },
+    tagline: {
+      ko: "48GB VRAM GPU(L40S 또는 RTX 6000 Ada) 1장, 32코어 · 256GB 호스트. 추론, 그래픽 작업, 렌더링에 적합.",
+      en: "One 48 GB GPU (L40S or RTX 6000 Ada) on a 32-core, 256 GB host. Good for inference, graphics work and rendering.",
+    },
+    specs: [
+      { k: "GPU", ko: "NVIDIA L40S 또는 RTX 6000 Ada 48GB GDDR6 ECC (Ada Lovelace)", en: "NVIDIA L40S or RTX 6000 Ada 48 GB GDDR6 ECC (Ada Lovelace)" },
+      { k: "Host", ko: "32 Core · 256 GB RAM", en: "32 cores · 256 GB RAM" },
+      { k: "Use", ko: "추론 · 그래픽 · 렌더", en: "Inference · Graphics · Rendering" },
+      { k: "Access", ko: "Root / SSH", en: "Root / SSH" },
+    ],
+    priceKrw: 1500000, // 시트 price_krw 가 우선
+    priceUsd: null,
+    priceNote: { ko: "월 단위 · 예약 순서대로 배정", en: "Monthly · assigned in reservation order" },
+    os: ["Ubuntu 24.04 LTS", "Ubuntu 22.04 LTS", "Debian 12", "Rocky Linux 9", "Proxmox VE 8", "Windows Server (ask)"],
+    ctaType: "reserve",
+  },
 ];

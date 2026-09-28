@@ -2,7 +2,7 @@
 window.I18N = {
   ko: {
     "meta.title": "베어메탈 GPU 서버 임대 — ELGRIM",
-    "meta.desc": "엘그림 베어메탈. RTX A4000 그래픽 서버를 물리 서버 통째로 임대합니다. MI325X 8-GPU AI 서버 예약 접수 중. 이메일 한 통으로 연결.",
+    "meta.desc": "엘그림 베어메탈. RTX A4000, RTX 4090, L40S / RTX 6000 Ada, MI325X ×8 GPU 서버 임대 및 예약 접수. 이메일 한 통으로 연결.",
     "status.bar": "ELGRIM 베어메탈은 현재 소프트 런칭 중입니다. 결제 시스템 대신 이메일로 직접 연결해 드립니다 ·",
     "nav.home": "홈", "nav.servers": "서버", "nav.how": "이용 방법", "nav.included": "포함 사항", "nav.faq": "FAQ",
     "cta.request.short": "사용 요청",
@@ -38,7 +38,7 @@ window.I18N = {
     "faq.items": [
       ["베어메탈 서버가 뭔가요?", "물리 서버 한 대를 통째로 빌려드리는 방식입니다. 다른 사용자와 자원을 나누지 않고, 하드웨어를 직접 제어할 수 있습니다."],
       ["왜 결제 버튼이 없나요?", "소프트 런칭 단계라 자동 결제를 붙이지 않았습니다. 요청서를 보내주시면 담당자가 <span data-reply-within></span> 안에 회신해 가격과 기간을 협의하고, 확정되면 계좌이체/세금계산서로 진행합니다."],
-      ["\"예약하기\"는 무엇을 하나요?", "입고 예정인 서버(MI325X ×8)에 대해 대기 순번을 잡는 기능입니다. 이메일과 희망 GPU 수, 기간이 기록되며, 입고 시 순번대로 연락드립니다. 예약 자체는 무료이며 취소도 자유롭습니다."],
+      ["\"예약하기\"는 무엇을 하나요?", "예약 접수 중인 서버(RTX 4090, L40S / RTX 6000 Ada, MI325X ×8 등)의 대기 순번을 잡는 기능입니다. 이메일과 용도, 기간(MI325X는 희망 GPU 수까지)이 기록되며, 입고 시 순번대로 연락드립니다. 예약 자체는 무료이며 취소도 자유롭습니다."],
       ["가격은 어떤 통화로 결제하나요?", "표시 통화는 원화(KRW)와 미국 달러(USD)를 지원합니다. 국내 결제는 원화 계좌이체 + 세금계산서, 해외는 USD 송금(Wise/PayPal 협의)으로 진행합니다. 한쪽 통화가 비어 있으면 환율 환산가(≈)로 표시됩니다."],
       ["GPU 한 장만 빌릴 수도 있나요?", "MI325X 서버는 GPU 단위 분할 임대를 협의 중입니다. 요청서에 필요한 GPU 수를 적어주세요. A4000 서버는 한 대 단위입니다."],
       ["배포까지 얼마나 걸리나요?", "즉시 사용 가능 서버는 회신 후 보통 1영업일 안에 OS 설치와 접속 정보 전달이 끝납니다. 입고 예정 서버는 입고 일정에 따릅니다."],
@@ -69,7 +69,7 @@ window.I18N = {
   },
   en: {
     "meta.title": "Bare-metal GPU servers — ELGRIM",
-    "meta.desc": "ELGRIM Bare Metal. Rent a whole RTX A4000 graphics server. 8× MI325X AI server open for reservations. One email to connect.",
+    "meta.desc": "ELGRIM Bare Metal. RTX A4000, RTX 4090, L40S / RTX 6000 Ada and 8× MI325X GPU servers for rent and reservation. One email to connect.",
     "status.bar": "ELGRIM Bare Metal is in soft launch. Instead of a checkout, we connect you directly by email ·",
     "nav.home": "Home", "nav.servers": "Servers", "nav.how": "How it works", "nav.included": "Included", "nav.faq": "FAQ",
     "cta.request.short": "Request access",
@@ -105,7 +105,7 @@ window.I18N = {
     "faq.items": [
       ["What is a bare-metal server?", "A physical server rented entirely to you. No shared resources with other tenants and full control of the hardware."],
       ["Why is there no checkout button?", "We are in soft launch and have not wired up automated billing yet. Send a request and we reply within <span data-reply-within></span> to agree price and term; payment is by bank transfer or invoice."],
-      ["What does \"Reserve\" do?", "It holds your place in line for a server that is arriving soon (8× MI325X). We record your email, desired GPU count and term, and contact reservations in order once the hardware lands. Reserving is free and can be cancelled anytime."],
+      ["What does \"Reserve\" do?", "It holds your place in line for a server that is taking reservations (RTX 4090, L40S / RTX 6000 Ada, 8× MI325X, etc.). We record your email, purpose and term (plus desired GPU count for the MI325X node), and contact reservations in order once the hardware lands. Reserving is free and can be cancelled anytime."],
       ["Which currency do I pay in?", "Prices are shown in KRW and USD. Domestic customers pay by KRW bank transfer with a tax invoice; international customers by USD transfer (Wise / PayPal on request). If one currency is not set, a converted estimate (≈) is shown."],
       ["Can I rent a single GPU?", "Per-GPU split rental of the MI325X node is being arranged. Put the number of GPUs you need in the request. The A4000 server is rented as a whole machine."],
       ["How fast is deployment?", "For servers available now, OS install and credentials are usually done within one business day of our reply. Servers arriving soon follow the delivery schedule."],

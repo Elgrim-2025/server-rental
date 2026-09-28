@@ -202,7 +202,9 @@
     osSel.innerHTML = server.os.map((o) => `<option>${o}</option>`).join("");
     const cardOs = $(`#os-${server.id}`);
     if (cardOs) osSel.value = cardOs.value;
-    $("#gpuField").style.display = isReserve ? "grid" : "none";
+    // 희망 GPU 수는 멀티 GPU 노드(MI325X ×8 등) 예약일 때만 받음
+    current.showGpu = isReserve && gpuCount(server) > 1;
+    $("#gpuField").style.display = current.showGpu ? "grid" : "none";
     const sb = $("#submitBtn");
     sb.textContent = t(isReserve ? "form.submit.reserve" : "form.submit.request");
     sb.className = isReserve ? "btn btn-amber" : "btn btn-accent";
@@ -226,7 +228,7 @@
     const p = Object.fromEntries(new FormData(form).entries());
     return {
       ...p,
-      gpuCount: current.type === "reserve" ? p.gpuCount : "",
+      gpuCount: current.showGpu ? p.gpuCount : "",
       lang, currency,
       timestamp: new Date().toISOString(),
       page: location.href,
