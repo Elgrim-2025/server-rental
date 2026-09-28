@@ -3,7 +3,8 @@
  *
  * 시트 구성 (setup() 실행 시 자동 생성)
  *   servers : 가격/상태/문구. 여기만 고치면 사이트에 반영됩니다 (캐시 최대 2분).
- *   config  : 환율, 회신시간 등 키/값 설정
+ *   config  : 환율, 회신시간, contact_email(연락·알림 메일) 등 키/값 설정
+ *             notify_email 행을 추가하면 알림 메일만 그 주소로 보냄 (없으면 contact_email)
  *   logs    : 사용 요청 / 예약 로그 (프론트에서 POST)
  *
  * API
@@ -13,8 +14,9 @@
  */
 
 const SHARED_KEY = "elgrim-x0c35u7c1ci4w5u9";          // 프론트 servers.js 의 logKey 와 동일하게
-const NOTIFY_EMAIL = "chkang@elgrim.kr";   // "" 이면 Apps Script 메일 알림 끔
-const NOTIFY_ON = ["reserve"];           // 알림 보낼 type. FormSubmit 을 끄면 ["request","reserve"] 로
+// 알림 메일 수신 주소는 config 시트에서 읽음: notify_email → contact_email → 아래 기본값 순
+const NOTIFY_EMAIL_DEFAULT = "help@elliongpu.com"; // 시트에 둘 다 비어 있을 때만 사용
+const NOTIFY_ON = ["reserve"];           // 알림 보낼 type. [] 이면 알림 끔. FormSubmit 을 끄면 ["request","reserve"] 로
 
 const SH_SERVERS = "servers";
 const SH_CONFIG = "config";
@@ -35,7 +37,7 @@ const SEED_CONFIG = [
   ["fx_usd_krw", "1400", "USD 가격이 비어 있을 때 KRW÷환율 로 자동 환산"],
   ["reply_within_ko", "24시간", "회신 목표 시간(한글)"],
   ["reply_within_en", "24 hours", "회신 목표 시간(영문)"],
-  ["contact_email", "chkang@elgrim.kr", "표시용 연락 메일"],
+  ["contact_email", "help@elliongpu.com", "연락 메일 (사이트 표시 + 요청/예약 메일 수신)"],
 ];
 
 /* ---------------- helpers ---------------- */
@@ -60,6 +62,15 @@ function rows_(sh) {
   const h = v.shift() || [];
   return v.filter((r) => String(r[0]).trim() !== "").map((r) => Object.fromEntries(h.map((k, i) => [k, r[i] instanceof Date ? r[i].toISOString() : r[i]])));
 }
+function config_() {
+  const cfg = {};
+  rows_(sheet_(SH_CONFIG, ["key", "value", "memo"], SEED_CONFIG)).forEach((r) => (cfg[String(r.key).trim()] = typeof r.value === "string" ? r.value.trim() : r.value));
+  return cfg;
+}
+function notifyEmail_(cfg) {
+  cfg = cfg || config_();
+  return String(cfg.notify_email || cfg.contact_email || NOTIFY_EMAIL_DEFAULT || "").trim();
+}
 function num_(x) { const n = Number(String(x).replace(/[^\d.]/g, "")); return isFinite(n) && n > 0 ? n : null; }
 
 /* ---------------- GET ---------------- */
@@ -77,8 +88,7 @@ function doGet(e) {
       priceNote: { ko: r.price_note_ko || "", en: r.price_note_en || "" },
       eta: { ko: r.eta_ko || "", en: r.eta_en || "" },
     }));
-    const cfg = {};
-    rows_(sheet_(SH_CONFIG, ["key", "value", "memo"], SEED_CONFIG)).forEach((r) => (cfg[r.key] = r.value));
+    const cfg = config_();
     return json_({ ok: true, updatedAt: new Date().toISOString(), servers: servers, config: cfg });
   }
 
@@ -115,14 +125,17 @@ function doPost(e) {
       sh.getRange(sh.getLastRow(), 1).setNumberFormat("yyyy-mm-dd hh:mm:ss");
     } finally { lock.releaseLock(); }
 
-    if (NOTIFY_EMAIL && NOTIFY_ON.indexOf(body.type) !== -1) notify_(body);
+    if (NOTIFY_ON.indexOf(body.type) !== -1) {
+      const to = notifyEmail_();
+      if (to) notify_(body, to);
+    }
     return json_({ ok: true });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
   }
 }
 
-function notify_(b) {
+function notify_(b, to) {
   const subject = "[ELGRIM " + (b.type === "reserve" ? "예약" : "사용요청") + "] " + (b.serverName || "") + " — " + (b.email || "");
   const lines = [
     "구분: " + (b.type === "reserve" ? "예약(입고 예정)" : "사용 요청"),
@@ -140,7 +153,12 @@ function notify_(b) {
     "페이지: " + b.page,
     "시트: " + ss_().getUrl(),
   ];
-  MailApp.sendEmail({ to: NOTIFY_EMAIL, replyTo: b.email || undefined, subject: subject, body: lines.join("\n") });
+  MailApp.sendEmail({ to: to, replyTo: b.email || undefined, subject: subject, body: lines.join("\n") });
+}
+
+/** 편집기에서 실행: 현재 알림 수신 주소 확인용 (메일은 보내지 않음) */
+function checkNotifyEmail() {
+  Logger.log("notify to: " + notifyEmail_() + " / contact_email: " + config_().contact_email);
 }
 
 /** 편집기에서 1회 실행: 시트 3개 생성 + 권한 승인 */
